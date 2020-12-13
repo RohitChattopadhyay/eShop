@@ -17,7 +17,7 @@
 <% if (request.getParameter("showNav")==null || !request.getParameter("showNav").equals("false")){%>
 <nav class="navbar navbar-expand-lg">
     <a class="navbar-brand w-50" href="/marketplace">
-        <img src="./logo.png" alt="eShop" style="max-height:4em;">
+        <img src="./authlogo.png" alt="eShop" style="max-height:4em;">
     </a>
     <form class="form-inline w-50 my-2 my-lg-0">
         <div class="input-group w-75 my-sm-0">

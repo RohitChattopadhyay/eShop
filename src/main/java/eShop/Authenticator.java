@@ -13,18 +13,19 @@ public class Authenticator implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-            throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         String path = req.getRequestURI();
+        HttpSession session = req.getSession(false);
         if (path.startsWith("/marketplace/auth")) {
-            chain.doFilter(request, response);
+            if (null != session && session.getAttribute("userid") != null && !path.endsWith("/signout")) 
+				res.sendRedirect("/marketplace");            
+            else
+                chain.doFilter(request, response);
         } else {
-            HttpSession session = req.getSession(false);
-            if (null == session || session.getAttribute("userid") == null) {
-				res.sendRedirect("/marketplace/auth.jsp");
-			}
+            if (null == session || session.getAttribute("userid") == null)
+				res.sendRedirect("/marketplace/auth.jsp");			
             else
                 chain.doFilter(request, response);
         }

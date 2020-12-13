@@ -15,20 +15,19 @@ public class DBConnectionManager {
         this.user = u;
         this.password = p;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             this.con = DriverManager.getConnection(dbURL, user, password);
             System.out.println("Database connection initialized for Application.");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-		
-	}
-	
-	public Connection getConnection(){
-		return this.con;
-	}
-	
-	public void closeConnection() throws SQLException {
-		this.con.close();
-	}
+    }
+
+    public Connection getConnection() {
+        return this.con;
+    }
+
+    public void closeConnection() throws SQLException {
+        this.con.close();
+    }
 }

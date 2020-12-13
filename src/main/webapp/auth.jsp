@@ -7,8 +7,8 @@
     }
 </style>
 <div class="row text-center pt-5">
-   <div class="col-sm-6 border shadow offset-sm-3 pt-5 bg-light">
-      <img src="/marketplace/logo.png"/>
+   <div class="col-sm-6 border shadow offset-sm-3 pt-2 bg-light">
+      <img src="/marketplace/authlogo.png"/>
       <table class="table bg-white table-bordered" style="table-layout: fixed;">
       <tr class="text-center">         
         <%
@@ -24,12 +24,12 @@
       </tr>
       <tr>
          <td colspan=2>
-            <form>
             <%
                 if (request.getParameter("register")!=null){%>
+                <form method="POST" action="/marketplace/auth/register">
                     <div class="form-group">
                         <label for="username">Email Address</label>
-                        <input required type="email" autocomplete="off" class="form-control" id="username" name="user" placeholder="Enter your Email">
+                        <input required type="email" autocomplete="off" class="form-control" id="username" name="username" placeholder="Enter your Email">
                     </div>
                     <div class="form-group">
                         <label for="pswd">Password</label>
@@ -38,31 +38,32 @@
                     <div class="form-row pb-2">
                         <label class="d-block col">Gender</label>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input required type="radio" id="maleRadio" name="gender" class="custom-control-input">
+                            <input value="M" required type="radio" id="maleRadio" name="gender" class="custom-control-input">
                             <label class="custom-control-label" for="maleRadio">Male</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input required type="radio" id="femaleRadio" name="gender" class="custom-control-input">
+                            <input value="F" required type="radio" id="femaleRadio" name="gender" class="custom-control-input">
                             <label class="custom-control-label" for="femaleRadio">Female</label>
                         </div>
                     </div>
                     <div class="form-row pb-2">
                         <label class="d-block col">Preference</label>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input required type="radio" id="discountRadio" name="pref" class="custom-control-input">
+                            <input value="D" required type="radio" id="discountRadio" name="preference" class="custom-control-input">
                             <label class="custom-control-label" for="discountRadio">More Discounts</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline col">
-                            <input required type="radio" id="freshRadio" name="pref" class="custom-control-input">
+                            <input value="N" required type="radio" id="freshRadio" name="preference" class="custom-control-input">
                             <label class="custom-control-label" for="freshRadio">Fresh Arrivals</label>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-info btn-block">Register</button>
                 <%}
-                else{%>
+                else{%>                
+                <form method="POST" action="/marketplace/auth/signin">
                     <div class="form-group">
                         <label for="username">Email Address</label>
-                        <input required type="email" autocomplete="off" class="form-control" id="username" name="user" placeholder="Enter your Email">
+                        <input required type="email" autocomplete="off" class="form-control" id="username" name="username" placeholder="Enter your Email">
                     </div>
                     <div class="form-group">
                         <label for="pswd">Password</label>
@@ -73,6 +74,8 @@
             %>
             </form>
          </td>
-      </tr>
+      </tr>      
+      </table>
    </div>
-</div>
+</div>    
+<p class="mt-4 text-center text-danger"><%=request.getParameter("err")!=null?request.getParameter("err"):""%></p>
