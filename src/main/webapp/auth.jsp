@@ -1,24 +1,26 @@
-<jsp:include page="header.jsp"/>
+<jsp:include page="header.jsp">
+    <jsp:param name="showNav" value="false" />
+</jsp:include>
 <style>
     .tab a{        
         text-decoration : none;
     }
 </style>
 <div class="row text-center pt-5">
-   <div class="col-sm-6 border shadow offset-sm-3 pt-5">
-      <h3>Welcome</h3>
-      <table class="table table-bordered mt-5" style="table-layout: fixed;">
+   <div class="col-sm-6 border shadow offset-sm-3 pt-5 bg-light">
+      <img src="/marketplace/logo.png"/>
+      <table class="table bg-white table-bordered" style="table-layout: fixed;">
       <tr class="text-center">         
         <%
             if (request.getParameter("register")!=null){%>
-                <th class="tab"><a href="./">Login</a></th>
+                <th class="tab"><a href="/marketplace/auth.jsp">Login</a></th>
                 <th class="tab">Register</th>  
             <%}
             else{%>
                 <th class="tab">Login</th>
                 <th class="tab"><a href="?register">Register</a></th>
             <%}
-        %>         
+        %>
       </tr>
       <tr>
          <td colspan=2>
