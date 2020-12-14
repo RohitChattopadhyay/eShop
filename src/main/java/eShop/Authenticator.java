@@ -19,7 +19,7 @@ public class Authenticator implements Filter {
         String path = req.getRequestURI();
         HttpSession session = req.getSession(false);
         if (path.startsWith("/marketplace/auth")) {
-            if (null != session && session.getAttribute("userid") != null && !path.endsWith("/signout")) 
+            if (null != session && session.getAttribute("userid") != null && !path.endsWith("/signout") && !path.endsWith(".png")) 
 				res.sendRedirect("/marketplace");            
             else
                 chain.doFilter(request, response);

@@ -15,7 +15,7 @@ public class ActiveUserListener implements HttpSessionListener  {
 
     @Override
     public void sessionDestroyed(HttpSessionEvent se) {
-        activeSessions.decrementAndGet();
+        // activeSessions.decrementAndGet();
     }
 
     public static int getActiveSessions() {

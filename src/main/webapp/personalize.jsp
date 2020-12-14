@@ -4,11 +4,11 @@
     <div class="col-12">
         <div class="card border-0">
             <div class="card-body">
-                <h4 class="card-title">Recommendation</h4>
+                <h4 class="card-title"><%=session.getAttribute("preference").equals("D")?"Discounts":"New Arrivals"%></h4>
                 <div class="owl-carousel">
                 <%
-                    LinkedList<Apparel> recommendations = (LinkedList)request.getAttribute("recommendations");
-                    for(Apparel apparel :  recommendations){
+                    LinkedList<Apparel> results = (LinkedList)request.getAttribute("results");
+                    for(Apparel apparel :  results){
                     %>
                         <div class="item">
                             <div class="card">
