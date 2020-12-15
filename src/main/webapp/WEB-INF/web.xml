@@ -16,4 +16,7 @@
     <param-name>DBURL</param-name>
     <param-value>jdbc:mysql://localhost/assignment4</param-value>
   </context-param>
+  <session-config>
+    <session-timeout>2</session-timeout>
+  </session-config>
 </web-app>
